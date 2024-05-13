@@ -88,26 +88,27 @@ def main():
     st.title("PyCon Concierge")
     # st.sidebar.title("Document Processing")
 
-    loader = DirectoryLoader(
-        cfg.DATA_DIR / "pycon-2024-schedule",
-        glob="*.txt",
-        loader_cls=TextLoader,
-        use_multithreading=True,
-        show_progress=True,
-    )
+    # loader = DirectoryLoader(
+    #     cfg.DATA_DIR / "pycon-2024-schedule",
+    #     glob="*.txt",
+    #     loader_cls=TextLoader,
+    #     use_multithreading=True,
+    #     show_progress=True,
+    # )
 
-    documents = loader.load()
+    # documents = loader.load()
 
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=300,
-        chunk_overlap=100,
-        length_function=len,
-        add_start_index=True,
-    )
+    # text_splitter = RecursiveCharacterTextSplitter(
+    #     chunk_size=300,
+    #     chunk_overlap=100,
+    #     length_function=len,
+    #     add_start_index=True,
+    # )
 
-    text_chunks = text_splitter.split_documents(documents)
+    # text_chunks = text_splitter.split_documents(documents)
     embeddings = OpenAIEmbeddings()
-    vector_store = DuckDB.from_documents(text_chunks, embeddings, connection=duckdb.connect("pycon2024_schedule.ddb"))
+    conn = duckdb.connect("pycon2024_schedule.ddb")
+    vector_store = DuckDB(connection=conn, embedding=embeddings)
 
     chain = create_conversational_chain(vector_store=vector_store)
 

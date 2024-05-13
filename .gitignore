@@ -1,8 +1,10 @@
 .venv/
+.vscode/
 .python-version
 .DS_Store
 *.pyc
 
 .env
+
 
 pycongpt/data/pycon-2024-schedule
