@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "pycongpt"
+version = "0.1.0"
+description = "Interact with PyCon 2024's conference schedule using ChatGPT."
+authors = ["Nick Muoh <nickspirit3+github@gmail.com>"]
+license = "Proprietary"
+# readme = "README.md"
+
+# [tool.poetry.scripts]
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlit = "^1.34.0"
+pandas = "^2.2.2"
+plotly = "^5.22.0"
+igviz = "^0.5.1"
+httpx = "^0.27.0"
+beautifulsoup4 = "^4.12.3"
+python-slugify = "^8.0.4"
+tqdm = "^4.66.4"
+python-dotenv = "^1.0.1"
+duckdb = "^0.10.2"
+langchain = "^0.1.20"
+langchain-openai = "^0.1.6"
+streamlit-chat = "^0.1.1"
+
+[tool.poetry.group.dev.dependencies]
+watchdog = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
